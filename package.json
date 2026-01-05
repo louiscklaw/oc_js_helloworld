@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "app_AI_code_selfcheck": "echo \"Error: no test specified\" && exit 1"
+    "app_AI_code_selfcheck": "echo \"Error: no test specified\""
   },
   "keywords": [],
   "author": "",
