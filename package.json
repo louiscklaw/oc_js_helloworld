@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "ai_selfcheck": "echo \"hello ai, i am fine~\""
+    "ai_selfcheck": "./scripts/ai_selfcheck.sh",
+    "ai_mobile_build_test": "cd mobile && npm run build"
   },
   "keywords": [],
   "author": "",
