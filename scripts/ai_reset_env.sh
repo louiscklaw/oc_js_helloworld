@@ -2,6 +2,6 @@
 
 set -ex
 
-npm -ci
+npm i
 
 echo "done"
