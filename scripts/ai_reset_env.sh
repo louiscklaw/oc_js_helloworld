@@ -2,7 +2,6 @@
 
 set -ex
 
-
-pnpm i --frozen-lockfile
+npm -ci
 
 echo "done"
