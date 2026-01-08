@@ -16,6 +16,7 @@ CODE_UNDER_WORK=./code_under_work
 SRC_BRANCH=develop/trunk
 KEY_PATH=$OC_HOME/keys/id_rsa
 PROMPTS_HOME=$OC_HOME/prompts
+TASK_DONE=$OC_HOME/tasks/_done
 
 chmod +x $OC_HOME/*.sh
 chmod +x $CODE_UNDER_WORK/scripts/*.sh
