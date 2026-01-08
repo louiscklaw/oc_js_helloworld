@@ -1,53 +1,108 @@
-# Code Under Work
+# JavaScript Hello World
 
-A simple JavaScript "Hello World" project.
+A simple and clean JavaScript "Hello World" project that serves as an excellent starting point for learning JavaScript development.
 
-## Description
-
-This is a basic Node.js project that demonstrates a minimal "Hello World" application. It serves as a starting point for JavaScript development.
-
-## Installation
+## 🚀 Quick Start
 
 ```bash
-# Install dependencies
+# Clone and install dependencies
+git clone <repository-url>
+cd github_js_helloworld
 npm install
 
-# Or if you prefer pnpm
+# Run the application
+node index.js
+```
+
+## 📝 Description
+
+This is a minimal Node.js project that demonstrates the classic "Hello World" example in JavaScript. It's perfect for:
+- Learning JavaScript basics
+- Testing development environments
+- Starting new projects
+- Understanding Node.js fundamentals
+
+## 🛠️ Installation
+
+Choose your preferred package manager:
+
+### Using npm
+```bash
+npm install
+```
+
+### Using pnpm
+```bash
 pnpm install
 ```
 
-## Usage
+## 🏃‍♂️ Usage
 
-Run the main script:
+Run the main script to see the output:
 
 ```bash
 node index.js
 ```
 
-This will output:
+**Expected output:**
 ```
 helloworld
 ```
 
-## Scripts
+## 📜 Available Scripts
 
-- `npm test` - Runs tests (currently shows error message as no tests are specified)
-- `npm run app_AI_code_selfcheck` - A custom script that outputs a self-check message
+- `npm test` - Run tests (placeholder - no tests currently configured)
+- `npm run ai_selfcheck` - Execute the application and run a self-check
+- `npm run ai_mobile_build_test` - Build mobile components (if available)
 
-## Dependencies
+## 📦 Dependencies
 
-- **axios** (v1.13.2) - Promise based HTTP client for the browser and node.js
+- **axios** (v1.13.2) - Promise based HTTP client for making requests
 
-## Project Structure
+## 📁 Project Structure
 
 ```
-.
-├── index.js          # Main application entry point
-├── package.json      # Project configuration and dependencies
-├── .gitignore        # Git ignore file
-└── .tmp/            # Temporary files directory
+github_js_helloworld/
+├── index.js              # Main application entry point
+├── package.json          # Project configuration and metadata
+├── package-lock.json     # npm lock file (auto-generated)
+├── pnpm-lock.yaml        # pnpm lock file (auto-generated)
+├── .gitignore           # Git ignore rules
+├── scripts/             # Utility scripts
+│   ├── ai_selfcheck.sh  # Self-check script
+│   └── ai_reset_env.sh  # Environment reset script
+├── .tmp/                # Temporary files directory
+└── README.md            # This file
 ```
 
-## License
+## 🔧 Development Scripts
 
-ISC
+### Self-Check
+```bash
+npm run ai_selfcheck
+```
+This script runs the main application and outputs "done" when complete.
+
+### Environment Reset
+```bash
+# Manual execution
+./scripts/ai_reset_env.sh
+```
+This script reinstalls all dependencies and outputs "done" when complete.
+
+## 🎯 Learning Objectives
+
+This project helps you understand:
+- Basic JavaScript syntax
+- Node.js runtime execution
+- Package management with npm/pnpm
+- Project structure and organization
+- Git version control fundamentals
+
+## 📄 License
+
+ISC License - Feel free to use this code for learning and development purposes.
+
+---
+
+*Happy coding! 🎉*
