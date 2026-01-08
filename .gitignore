@@ -1,14 +1,21 @@
-**/.tmp/**
-**/node_modules/**
-**/keys/**
-**/.AI_ws/**
-**/*.log
-**/*.del
-**/*.bak
-**/version.txt
-**/*Zone.Identifier
-**/code_under_work/**
-**/tasks/_done/**
+# Temporary files and directories
+**/.tmp/**                    # Temporary workspace files
+**/node_modules/**            # Node.js dependencies
+**/keys/**                    # SSH keys and secrets
+**/.AI_ws/**                  # AI workspace directories
+**/*.log                      # Log files
+**/*.del                      # Deleted file markers
+**/*.bak                      # Backup files
+**/version.txt                # Version files
+**/*Zone.Identifier           # Windows zone identifiers
+**/code_under_work/**         # Nested workspace (exclude to avoid recursion)
+**/tasks/_done/**             # Completed task files
+
+# Additional project-specific patterns
+**/.AI_task_log/**            # AI task execution logs
+**/test_before.out            # Pre-modification test outputs
+**/test_after.out             # Post-modification test outputs
+**/*.tmp                      # Temporary file extensions
 
 # Created by https://www.toptal.com/developers/gitignore/api/node,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,python
