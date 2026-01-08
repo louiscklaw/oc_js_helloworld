@@ -6,6 +6,8 @@
 **/*.del
 **/*.bak
 **/version.txt
+**/*Zone.Identifier
+**/code_under_work/**
 
 # Created by https://www.toptal.com/developers/gitignore/api/node,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,python
