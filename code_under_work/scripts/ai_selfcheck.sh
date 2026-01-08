@@ -1,2 +1,7 @@
 #!/usr/bin/env bash
-echo \"selfcheck passed\"
+
+set -ex
+
+node ./index.js
+
+echo "done"

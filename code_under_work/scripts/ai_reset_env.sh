@@ -1,2 +1,7 @@
 #!/usr/bin/env bash
-echo \"reset passed\"
+
+set -ex
+
+npm i
+
+echo "done"
