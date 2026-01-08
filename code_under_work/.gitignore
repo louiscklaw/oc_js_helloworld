@@ -1,3 +1,4 @@
+# Temporary files and directories
 **/.tmp/**
 **/node_modules/**
 **/keys/**
@@ -6,6 +7,15 @@
 **/*.del
 **/*.bak
 **/version.txt
+**/*Zone.Identifier
+**/code_under_work/**
+**/tasks/_done/**
+
+# Additional project-specific patterns
+**/.AI_task_log/**
+**/test_before.out
+**/test_after.out
+**/*.tmp
 
 # Created by https://www.toptal.com/developers/gitignore/api/node,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,python
