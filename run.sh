@@ -100,6 +100,14 @@ for task_file in $OC_HOME/tasks/_queue/*.md; do
         git push --set-upstream origin develop/$TASK_NAME/trunk -f
     popd
 
+    # archiving
+    mkdir -p $OC_HOME/.AI_task_log/$TASK_NAME
+    cp -r $CODE_UNDER_WORK/.tmp/ $OC_HOME/.AI_task_log/$TASK_NAME
+
+    # consider done here
+    #
+    mv "$task_file" $TASK_DONE
+
   fi
 
   # set build name after work
