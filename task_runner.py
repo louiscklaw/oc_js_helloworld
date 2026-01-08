@@ -25,18 +25,40 @@ TASK_NAME = sys.argv[1]
 
 
 def run_command(command, cwd=None, check=True, capture_output=False):
-    """Run a shell command with error handling."""
+    """Run a shell command with error handling and streaming output."""
     print(f"Running: {command}")
     try:
-        result = subprocess.run(
+        process = subprocess.Popen(
             command,
             shell=True,
             cwd=cwd,
-            check=check,
             text=True,
             encoding="utf-8",
             stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
         )
+
+        # Stream output in real-time
+        output_lines = []
+        if process.stdout:
+            while True:
+                line = process.stdout.readline()
+                if not line:
+                    break
+                print(line.rstrip())
+                output_lines.append(line)
+
+        process.wait()
+        returncode = process.returncode
+
+        result = subprocess.CompletedProcess(
+            args=command, returncode=returncode, stdout="".join(output_lines), stderr=""
+        )
+
+        if check and result.returncode != 0:
+            raise subprocess.CalledProcessError(
+                result.returncode, command, result.stdout
+            )
 
         return result
     except subprocess.CalledProcessError as e:
@@ -48,19 +70,40 @@ def run_command(command, cwd=None, check=True, capture_output=False):
 
 
 def run_command_test_build(command, cwd=None, check=True, capture_output=False):
-    """Run a shell command with error handling."""
+    """Run a shell command with error handling and streaming output."""
     print(f"Running: {command}")
     try:
-        result = subprocess.run(
+        process = subprocess.Popen(
             command,
             shell=True,
             cwd=cwd,
-            check=check,
             text=True,
             encoding="utf-8",
             stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
         )
+
+        # Stream output in real-time
+        output_lines = []
+        if process.stdout:
+            while True:
+                line = process.stdout.readline()
+                if not line:
+                    break
+                print(line.rstrip())
+                output_lines.append(line)
+
+        process.wait()
+        returncode = process.returncode
+
+        result = subprocess.CompletedProcess(
+            args=command, returncode=returncode, stdout="".join(output_lines), stderr=""
+        )
+
+        if check and result.returncode != 0:
+            raise subprocess.CalledProcessError(
+                result.returncode, command, result.stdout
+            )
 
         return result
     except subprocess.CalledProcessError as e:
@@ -74,27 +117,22 @@ def run_command_test_build(command, cwd=None, check=True, capture_output=False):
 def TestBeforeModification():
     print("003 - test before modification")
 
-    result = subprocess.run(
-        ["./scripts/ai_selfcheck.sh"],
-        cwd=CODE_UNDER_WORK_DIR,
-        capture_output=True,
-        text=True,
-        check=False,
+    # Use the streaming run_command function
+    result = run_command(
+        "./scripts/ai_selfcheck.sh", cwd=CODE_UNDER_WORK_DIR, check=False
     )
 
     # Access the captured data
     result_code = result.returncode
     result_stdout = result.stdout
-    result_stderr = result.stderr
 
     if result_code == 0:
         with open(f"{AI_WS_DIR}/test_before.out", "w+") as f_out:
             f_out.truncate(0)
             f_out.writelines(result_stdout)
-
     else:
         with open(f"{AI_WS_DIR}/test_before.out", "w+") as f_out:
-            f_out.writelines(result_stderr)
+            f_out.writelines(result_stdout)
 
     print("003 - test before modification done")
 
@@ -114,9 +152,8 @@ def performModification(task_name):
         # os.makedirs(tmp_dir, exist_ok=True)
         # shutil.copy(first_md_file, f'{tmp_dir}/task.md')
 
-        result = subprocess.run(
-            ["./OcRunTask.sh"], cwd=WK_DIR, capture_output=True, text=True, check=False
-        )
+        # Use the streaming run_command function
+        result = run_command("./OcRunTask.sh", cwd=WK_DIR, check=False)
 
         return result
     else:
@@ -127,27 +164,22 @@ def performModification(task_name):
 def testAfterModificationAndGetExitStatus():
     print("005 - testAfterModificationAndGetExitStatus")
 
-    result = subprocess.run(
-        ["./scripts/ai_selfcheck.sh"],
-        cwd=CODE_UNDER_WORK_DIR,
-        capture_output=True,
-        text=True,
-        check=False,
+    # Use the streaming run_command function
+    result = run_command(
+        "./scripts/ai_selfcheck.sh", cwd=CODE_UNDER_WORK_DIR, check=False
     )
 
     # Access the captured data
     result_code = result.returncode
     result_stdout = result.stdout
-    result_stderr = result.stderr
 
     if result_code == 0:
         with open(f"{AI_WS_DIR}/test_after.out", "w+") as f_out:
             f_out.truncate(0)
             f_out.writelines(result_stdout)
-
     else:
         with open(f"{AI_WS_DIR}/test_after.out", "w+") as f_out:
-            f_out.writelines(result_stderr)
+            f_out.writelines(result_stdout)
 
     return result
 
@@ -163,13 +195,8 @@ def backToModify():
 def performCorrection(i):
     print(f"006 - perform correction - {i}")
 
-    result = subprocess.run(
-        ["./OcRunCorrection.sh"],
-        cwd=WK_DIR,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    # Use the streaming run_command function
+    result = run_command("./OcRunCorrection.sh", cwd=WK_DIR, check=False)
 
     return result
 
