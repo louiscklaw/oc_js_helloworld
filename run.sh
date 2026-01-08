@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # runner 3
 
+git config --global user.email "jenkins_ci@louislabs.com"
+git config --global user.name "jenkins-ci"
+
+
 # for openrouter disable color output
 export NO_COLOR=1
 
